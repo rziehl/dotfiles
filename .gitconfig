@@ -1,0 +1,15 @@
+[user]
+  email = robertziehl@gmail.com
+[color]
+  diff = auto
+[alias]
+  st = status
+  co = checkout
+  di = diff -w
+  l = log --oneline
+  br = branch
+  tree = log --oneline --decorate --graph --all
+  dc = diff --cached
+  dh = diff HEAD~1
+[core]
+  excludesfile = /Users/rob/.gitignore_global
