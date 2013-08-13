@@ -23,6 +23,7 @@ set listchars=tab:>-,trail:.,extends:.,precedes:<",eol:$
 "set cursorline
 set listchars=tab:>-,trail:.,extends:.,precedes:<
 set list
+set colorcolumn=80
 
 "Home colorscheme
 colorscheme seoul256
