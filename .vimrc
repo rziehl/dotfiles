@@ -16,6 +16,9 @@ set scrolloff=3
 set shortmess=atI
 set hidden
 set clipboard=unnamed
+
+filetype plugin on
+
 nmap <CR> _i<Enter><Esc>
 set numberwidth=5
 syntax on
@@ -26,7 +29,8 @@ set list
 set colorcolumn=80
 
 "Home colorscheme
-colorscheme seoul256
+"colorscheme seoul256
+colorscheme grb256
 
 "Work colorscheme
 "colorscheme sorcerer
