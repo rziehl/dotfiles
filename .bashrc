@@ -32,9 +32,26 @@ function dotsync(){
   cp -r ~/.vim ~/dotfiles
 }
 
-#function git-dirs(){
+function git-dirs(){
+  for file in $(lf); do
+    cd $file 2> /dev/null
+
+    if [ $? -eq 0 ]; then
+      git br -v &> /dev/null
+
+      if [ $? -eq 0 ]; then
+        echo -n $file
+        echo -n ' '
+        git br -v 2> /dev/null |
+        grep '\*' |
+        cut -d ' ' -f2
+      fi
+
+      cd ..
+    fi
+  done
   #for file in (lf); cd $file ^ /dev/null; and echo -n $file; and echo -n ' '; and git br -v | grep '\*' | cut -d ' ' -f2; and cd ..; end | column -t
-#}
+}
 
 #if git rev-parse > /dev/null ^ /dev/null
 #  set_color $fish_color_cwd
