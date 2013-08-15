@@ -29,8 +29,8 @@ function dotsync(){
   cp ~/.gitconfig ~/dotfiles/.gitconfig
   cp ~/.config/fish/config.fish ~/dotfiles/.config/fish/config.fish
   cp ~/.bashrc ~/dotfiles/.bashrc
-  cp -r ~/.config/fish/functions ~/dotfiles/.config/fish/functions
-  cp -r ~/.vim ~/dotfiles
+  rsync -ur --delete ~/.config/fish/functions ~/dotfiles/.config/fish
+  rsync -ur --delete ~/.vim ~/dotfiles
 }
 
 function git-dirs(){
