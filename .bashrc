@@ -53,31 +53,17 @@ function git-dirs(){
   done
 }
 
-#if git rev-parse > /dev/null ^ /dev/null
-#  set_color $fish_color_cwd
-#  echo -n "("
-#  echo -n (git config user.email)
-#  echo -n ":"
-#  echo -n (git branch 2> /dev/null | grep '\*' | awk '{print $2}')
-#  echo -n ")"
-#end
-#
-#set_color $fish_color_quote
-#echo -n "~>"
-#set_color normal
+function bash_prompt(){
+  directories=$(pwd | cut -d / -f 4-99)
+  git rev-parse &> /dev/null
 
-#function bash_prompt(){
-#  directories=$(pwd | cut -d / -f 4-99)
-#  git rev-parse > /dev/null 2> /dev/null
-#  echo $?
-#
-#  if [$? -eq 0]; then
-#    git_user=$(git config user.email)
-#    git_branch=$(git branch 2> /dev/null | grep '\*' | awk '{print $2}')
-#    export PS1="$directories($git_user:$git_branch)~>"
-#  else
-#    export PS1="$directories~>"
-#  fi
-#}
-#
-#bash_prompt
+  if [ $? -eq 0 ]; then
+    git_user=$(git config user.email)
+    git_branch=$(git branch 2> /dev/null | grep '\*' | awk '{print $2}')
+    export PS1="$directories($git_user:$git_branch)~>"
+  else
+    export PS1="$directories~>"
+  fi
+}
+
+export PROMPT_COMMAND="bash_prompt; $PROMPT_COMMAND"
