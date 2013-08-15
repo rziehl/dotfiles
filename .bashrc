@@ -8,6 +8,7 @@ alias sb='source ~/.bashrc'
 alias tree='tree -C'
 alias rake='bundle exec rake'
 alias less='less -r'
+alias squeeze="sed 's/  */ /g'"
 
 function lf(){
   ls |
