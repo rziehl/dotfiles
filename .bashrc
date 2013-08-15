@@ -66,4 +66,11 @@ function bash_prompt(){
   fi
 }
 
-export PROMPT_COMMAND="bash_prompt; $PROMPT_COMMAND"
+# History - increase filesize and always append
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+shopt -s histappend
+
+alias sync_history="history -a; history -c; history -r"
+
+export PROMPT_COMMAND="sync_history; bash_prompt; $PROMPT_COMMAND"
