@@ -100,6 +100,11 @@ function chronicle_update(){
 
 function chronicle(){
   touch ~/.chronicle
+
+  # sourcing bashrc causes duplicate entries
+  # because everything is timestamped we can just remove duplicates
+  uniq ~/.chronicle > ~/.chronicle.temp
+  cat ~/.chronicle.temp > ~/.chronicle
   cat ~/.chronicle
 }
 
