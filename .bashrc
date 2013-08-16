@@ -85,4 +85,18 @@ function termstats(){
   sort -r
 }
 
-export PROMPT_COMMAND="sync_history; bash_prompt; $PROMPT_COMMAND"
+# More detailed history
+function chronicle_update(){
+  last_command=$(history 1 | awk '{$1=""; print $0}')
+  current_dir=$(pwd)
+  current_time=$(date)
+  chronicle_entry="$current_time $current_dir $last_command"
+  echo $chronicle_entry >> ~/.chronicle
+}
+
+function chronicle(){
+  touch ~/.chronicle
+  cat ~/.chronicle
+}
+
+export PROMPT_COMMAND="chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
