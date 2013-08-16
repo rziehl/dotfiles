@@ -76,4 +76,13 @@ alias sync_history="history -a; history -c; history -r"
 # gnuplot
 export GDFONTPATH="/Users/rob/Library/Fonts"
 
+# Terminal Statistics
+function termstats(){
+  history |
+  awk '{print $2}' |
+  sort |
+  uniq -c |
+  sort -r
+}
+
 export PROMPT_COMMAND="sync_history; bash_prompt; $PROMPT_COMMAND"
