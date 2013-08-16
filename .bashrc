@@ -10,6 +10,7 @@ alias rake='bundle exec rake'
 alias less='less -r'
 alias squeeze="sed 's/  */ /g'"
 
+# List all files and folders excluding . and .. in the current directory
 function lf(){
   ls |
   ruby -e "puts STDIN.read.squeeze(' ')" |
@@ -21,6 +22,7 @@ function en(){
   vim ~/BTSync/dev_notes
 }
 
+# Sync all my dotfiles in my dotfiles folder
 function dotsync(){
   cp ~/.vimrc ~/dotfiles/.vimrc
   cp ~/.tmux.conf ~/dotfiles/.tmux.conf
@@ -33,6 +35,7 @@ function dotsync(){
   rsync -ur --delete ~/.vim ~/dotfiles
 }
 
+# Prints each subdirectory and what git branch it is currently on
 function git-dirs(){
   for file in $(lf); do
     cd $file 2> /dev/null
@@ -53,6 +56,7 @@ function git-dirs(){
   done
 }
 
+# Prompt
 function bash_prompt(){
   directories=$(pwd | cut -d / -f 4-99)
   git rev-parse &> /dev/null
