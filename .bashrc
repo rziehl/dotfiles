@@ -99,4 +99,11 @@ function chronicle(){
   cat ~/.chronicle
 }
 
+# More statistics with chronicle
+#
+# number of commands entered per day:
+#   chronicle | cut -d ' ' -f2-3 | uniq -c
+# number of unique commands entered per day:
+#   chronicle | cut -d ' ' -f2,3,8 | uniq -c | wc -l | xargs echo
+
 export PROMPT_COMMAND="chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
