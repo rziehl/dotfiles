@@ -73,4 +73,7 @@ shopt -s histappend
 
 alias sync_history="history -a; history -c; history -r"
 
+# gnuplot
+export GDFONTPATH="/Users/rob/Library/Fonts"
+
 export PROMPT_COMMAND="sync_history; bash_prompt; $PROMPT_COMMAND"
