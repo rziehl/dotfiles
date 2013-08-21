@@ -67,9 +67,9 @@ function bash_prompt(){
   if [ $? -eq 0 ]; then
     git_user=$(git config user.email)
     git_branch=$(git branch 2> /dev/null | grep '\*' | awk '{print $2}')
-    export PS1="\e[0;34m$directories\e[m($git_user:\e[0;33m$git_branch\e[m)\e[0;32m~>\e[m"
+    export PS1="\[\e[0;34m$directories\e[m($git_user:\e[0;33m$git_branch\e[m)\e[0;32m~>\e[m"
   else
-    export PS1="\e[0;33m$directories\e[m\e[0;32m~>\e[m"
+    export PS1="\[\e[0;33m$directories\e[m\e[0;32m~>\e[m"
   fi
 }
 
