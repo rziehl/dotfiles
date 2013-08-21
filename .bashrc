@@ -8,6 +8,9 @@ alias sb='source ~/.bashrc'
 alias tree='tree -C'
 alias rake='bundle exec rake'
 alias less='less -r'
+
+# String utils
+alias lstrip="sed 's/^ *//'"
 alias squeeze="sed 's/  */ /g'"
 
 # List all files and folders excluding . and .. in the current directory
