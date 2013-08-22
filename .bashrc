@@ -245,3 +245,7 @@ function rgrep(){
 }
 
 export PROMPT_COMMAND="activate_virtualenv; chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
+
+# Fuel specific stuff
+export FY_PATH_ANDROID_NDK=/Users/rziehl/dev/sdk/android-ndk-r8d/ndk-build
+export FY_PATH_ANDROID_SDK=/Users/rziehl/adt-bundle-mac-x86_64/sdk
