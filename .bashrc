@@ -28,14 +28,21 @@ function en(){
 # Sync all my dotfiles in my dotfiles folder
 function dotsync(){
   cp ~/.vimrc ~/dotfiles/.vimrc
-  cp ~/.tmux.conf ~/dotfiles/.tmux.conf
   cp ~/.screenrc ~/dotfiles/.screenrc
   cp ~/.gitignore_global ~/dotfiles/.gitignore_global
   cp ~/.gitconfig ~/dotfiles/.gitconfig
-  cp ~/.config/fish/config.fish ~/dotfiles/.config/fish/config.fish
   cp ~/.bashrc ~/dotfiles/.bashrc
-  rsync -ur --delete ~/.config/fish/functions ~/dotfiles/.config/fish
   rsync -ur --delete ~/.vim ~/dotfiles
+}
+
+# Update local files with dotfiles repo contents
+function dotsync_out(){
+  cp ~/dotfiles/.vimrc ~/.vimrc
+  cp ~/dotfiles/.screenrc ~/.screenrc
+  cp ~/dotfiles/.gitignore_global ~/.gitignore_global
+  cp ~/dotfiles/.bashrc ~/.bashrc
+  cp ~/dotfiles/.gitconfig ~/.gitconfig
+  rsync -ur --delete ~/dotfiles/.vim ~/.vim
 }
 
 # Prints each subdirectory and what git branch it is currently on
