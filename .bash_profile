@@ -1,2 +1,3 @@
 source ~/.bashrc
 clear
+screen
