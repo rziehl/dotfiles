@@ -44,7 +44,7 @@ function dotsync_out(){
   cp ~/dotfiles/.bashrc ~/.bashrc
   cp ~/dotfiles/.gitconfig ~/.gitconfig
   cp ~/dotfiles/.bash_profile ~/.bash_profile
-  rsync -ur --delete ~/dotfiles/.vim ~/.vim
+  rsync -ur --delete ~/dotfiles/.vim ~/.
 }
 
 # Prints each subdirectory and what git branch it is currently on
