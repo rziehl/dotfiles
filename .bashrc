@@ -32,6 +32,7 @@ function dotsync(){
   cp ~/.gitignore_global ~/dotfiles/.gitignore_global
   cp ~/.gitconfig ~/dotfiles/.gitconfig
   cp ~/.bashrc ~/dotfiles/.bashrc
+  cp ~/.bash_profile ~/dotfiles/.bash_profile
   rsync -ur --delete ~/.vim ~/dotfiles
 }
 
@@ -42,6 +43,7 @@ function dotsync_out(){
   cp ~/dotfiles/.gitignore_global ~/.gitignore_global
   cp ~/dotfiles/.bashrc ~/.bashrc
   cp ~/dotfiles/.gitconfig ~/.gitconfig
+  cp ~/dotfiles/.bash_profile ~/.bash_profile
   rsync -ur --delete ~/dotfiles/.vim ~/.vim
 }
 
@@ -124,5 +126,10 @@ function chronicle(){
 #   chronicle | cut -d ' ' -f2-3 | uniq -c
 # number of unique commands entered per day:
 #   chronicle | cut -d ' ' -f2,3,8 | uniq -c | wc -l | xargs echo
+# most commonly used directories:
+#   chronicle | cut -d ' ' -f7 | sort | uniq -c | sort -r
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 export PROMPT_COMMAND="chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
