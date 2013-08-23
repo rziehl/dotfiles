@@ -8,6 +8,7 @@ alias sb='source ~/.bashrc'
 alias tree='tree -C'
 alias rake='bundle exec rake'
 alias less='less -r'
+alias activate='source env/bin/activate'
 
 # String utils
 alias lstrip="sed 's/^ *//'"
@@ -70,15 +71,16 @@ function git-dirs(){
 
 # Prompt
 function bash_prompt(){
+  virtualenv=$(python -c 'import sys; print sys.real_prefix' &>/dev/null && echo -n "[\e[0;35m\]V_ENV ON\e[m\]]" || echo -n "")
   directories=$(pwd | cut -d / -f 4-99)
   git rev-parse &> /dev/null
 
   if [ $? -eq 0 ]; then
     git_user=$(git config user.email)
     git_branch=$(git branch 2> /dev/null | grep '\*' | awk '{print $2}')
-    export PS1="\[\e[0;34m\]$directories\e[m\]($git_user:\e[0;33m\]$git_branch\e[m\])\e[0;32m\]~>\e[m\]"
+    export PS1="\[$virtualenv\e[0;34m\]$directories\e[m\]($git_user:\e[0;33m\]$git_branch\e[m\])\e[0;32m\]~>\e[m\]"
   else
-    export PS1="\[\e[0;33m\]$directories\e[m\]\e[0;32m\]~>\e[m\]"
+    export PS1="\[$virtualenv\e[0;33m\]$directories\e[m\]\e[0;32m\]~>\e[m\]"
   fi
 }
 
@@ -132,4 +134,15 @@ function chronicle(){
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export PROMPT_COMMAND="chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
+function activate_virtualenv(){
+  test -e env/bin/activate
+
+  if [ $? -eq 0 ]; then
+    source env/bin/activate
+  else
+    # automatically deactivate it if not in a virtualenv
+    deactivate &> /dev/null
+  fi
+}
+
+export PROMPT_COMMAND="activate_virtualenv; chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
