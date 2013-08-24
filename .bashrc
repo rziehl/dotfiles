@@ -10,6 +10,16 @@ alias rake='bundle exec rake'
 alias less='less -r'
 alias activate='source env/bin/activate'
 
+# GCC (updated version and cross compilation)
+#   brew tap homebrew/versions
+#   brew install gcc48
+# also download:
+#   http://crossgcc.rts-software.org/download/gcc-4.8.0-qt-4.8.4-win32/gcc-4.8.0-qt-4.8.4-for-mingw32.dmg
+#   http://crossgcc.rts-software.org/download/gcc-4.8.0-for-linux32-linux64/gcc-4.8.0-for-linux32.dmg
+alias gcc='gcc-4.8'
+alias win32-gcc='/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin/i586-mingw32-gcc-4.8.0'
+alias linux-gcc='/usr/local/gcc-4.8.0-for-linux32/bin/i586-pc-linux-gcc-4.8.0'
+
 # String utils
 alias lstrip="sed 's/^ *//'"
 alias squeeze="sed 's/  */ /g'"
