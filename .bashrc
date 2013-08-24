@@ -9,6 +9,7 @@ alias tree='tree -C'
 alias rake='bundle exec rake'
 alias less='less -r'
 alias activate='source env/bin/activate'
+alias lft='for FILE in $(lf); do echo $(file $FILE); done'
 
 # GCC (updated version and cross compilation)
 #   brew tap homebrew/versions
