@@ -71,7 +71,7 @@ function git-dirs(){
 
 # Prompt
 function bash_prompt(){
-  virtualenv=$(python -c 'import sys; print sys.real_prefix' &>/dev/null && echo -n "[\e[0;35m\]V_ENV ON\e[m\]]" || echo -n "")
+  virtualenv=$(python -c 'import sys; print sys.real_prefix' &>/dev/null && echo -n "[\e[1;31m\]V_ENV ON\e[m\]]" || echo -n "")
   directories=$(pwd | cut -d / -f 4-99)
   git rev-parse &> /dev/null
 

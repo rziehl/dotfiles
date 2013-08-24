@@ -26,7 +26,6 @@ set listchars=tab:>-,trail:.,extends:.,precedes:<
 set list
 set colorcolumn=80
 set encoding=utf8
-colorscheme grb256
 
 "Command-t ignores
 :set wildignore+=*.eot,*.svg,*.png,*.o,*.pyc,*.ttf,*.woff,*.lock,*.db,*.swp,env/*
