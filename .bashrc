@@ -10,6 +10,7 @@ alias rake='bundle exec rake'
 alias less='less -r'
 alias activate='source env/bin/activate'
 alias lft='for FILE in $(lf); do echo $(file $FILE); done'
+alias git-root='cd $(git rev-parse --show-cdup)'
 
 # GCC (updated version and cross compilation)
 #   brew tap homebrew/versions
@@ -146,10 +147,22 @@ function chronicle(){
 export PATH="/usr/local/heroku/bin:$PATH"
 
 function activate_virtualenv(){
-  test -e env/bin/activate
+  env_dir='env/bin/activate'
+  git_root='./'
+
+  # test to see if we are in a git repo
+  git rev-parse &> /dev/null
 
   if [ $? -eq 0 ]; then
-    source env/bin/activate
+    git_root=$(git rev-parse --show-cdup)
+  fi
+
+  rel_env_dir=$git_root$env_dir
+
+  test -e $rel_env_dir
+
+  if [ $? -eq 0 ]; then
+    source $rel_env_dir
   else
     # automatically deactivate it if not in a virtualenv
     deactivate &> /dev/null
