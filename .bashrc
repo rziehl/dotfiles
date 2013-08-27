@@ -146,9 +146,45 @@ function chronicle(){
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# This is a pretty hacky function but an interesting one
+# that probably doesn't make sense at first to a random dotfiles spelunker
+# This function checks to see if the current directory has a
+# env/ directory used by virtualenv for Python development
+# If the current directory is within a git repository then this function
+# is smart enough to check the root of the git repository for the env/
+# directory
+# It will then automatically activate that virtual environment and
+# add a message saying that virtualenv is on in my bash prompt
+# It will also cache the current project directory so that each time I
+# type a command at my terminal, it simply checks to see if we are in
+# the project hierarchy so that it does not perform unnecessary activation
+# again which might potentially be slow (I don't know maybe it's not)
+# If I leave the project directory tree, then the cached file will be
+# deleted and my virtualenv will be deactivated
+# It still has a few bugs that I am fully aware of but it certainly does
+# streamline my personal Python workflow
+# It always assumes your virtualenv is called env/
+# I think if you cd into a subdirectory of a Python project it might
+# have issues too if the project isn't under git revision control and
+# you cd-ed from outside the project directory into it (although I haven't
+# tested this yet)
+
 function activate_virtualenv(){
   env_dir='env/bin/activate'
   git_root='./'
+  venv_dir_cache_file="$HOME/.last_venv_project_dir"
+
+  # see if we have a cached venv project directory
+  test -e $venv_dir_cache_file
+
+  if [ $? -eq 0 ]; then
+    pwd | grep $(cat $venv_dir_cache_file) > /dev/null
+
+    if [ $? -eq 0 ]; then
+      # we are in a subdirectory of the current python project with venv
+      return 0
+    fi
+  fi
 
   # test to see if we are in a git repo
   git rev-parse &> /dev/null
@@ -163,9 +199,17 @@ function activate_virtualenv(){
 
   if [ $? -eq 0 ]; then
     source $rel_env_dir
+
+    # hack to get the absolute path of a relative path
+    pushd $git_root &> /dev/null
+    absolute_git_root=$(pwd)
+    popd &> /dev/null
+
+    echo $absolute_git_root > $venv_dir_cache_file
   else
     # automatically deactivate it if not in a virtualenv
     deactivate &> /dev/null
+    rm $venv_dir_cache_file &> /dev/null
   fi
 }
 
