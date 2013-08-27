@@ -221,4 +221,6 @@ function rsed(){
   done
 }
 
+export -f rsed
+
 export PROMPT_COMMAND="activate_virtualenv; chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
