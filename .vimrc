@@ -12,7 +12,7 @@ set wildmode=longest,list,full
 set wildmenu
 set ignorecase
 set smartcase
-set scrolloff=14
+"set scrolloff=14
 set shortmess=atI
 set hidden
 set clipboard=unnamed
