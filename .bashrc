@@ -213,4 +213,12 @@ function activate_virtualenv(){
   fi
 }
 
+# recursive sed for mass code refactoring
+# usage: rsed '*.c' 's/old/new/g'
+function rsed(){
+  for file in $(find . -type file -name $1); do
+    LANG=C sed -i "" $2 $file
+  done
+}
+
 export PROMPT_COMMAND="activate_virtualenv; chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
