@@ -11,6 +11,7 @@ alias less='less -r'
 alias activate='source env/bin/activate'
 alias lft='for FILE in $(lf); do echo $(file $FILE); done'
 alias git-root='cd $(git rev-parse --show-cdup)'
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
 # GCC (updated version and cross compilation)
 #   brew tap homebrew/versions
@@ -46,6 +47,7 @@ function dotsync(){
   cp ~/.gitconfig ~/dotfiles/.gitconfig
   cp ~/.bashrc ~/dotfiles/.bashrc
   cp ~/.bash_profile ~/dotfiles/.bash_profile
+  cp ~/.ctags ~/dotfiles/.ctags
   rsync -ur --delete ~/.vim ~/dotfiles
 }
 
@@ -57,6 +59,7 @@ function dotsync_out(){
   cp ~/dotfiles/.bashrc ~/.bashrc
   cp ~/dotfiles/.gitconfig ~/.gitconfig
   cp ~/dotfiles/.bash_profile ~/.bash_profile
+  cp ~/dotfiles/.ctags ~/.ctags
   rsync -ur --delete ~/dotfiles/.vim ~/.
 }
 
