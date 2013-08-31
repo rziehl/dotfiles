@@ -232,4 +232,10 @@ function rsed(){
 
 export -f rsed
 
+# recursive grep
+# usage: rgrep '*.c' 'goto'
+function rgrep(){
+  find . -type file -name $1 | xargs grep $2
+}
+
 export PROMPT_COMMAND="activate_virtualenv; chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
