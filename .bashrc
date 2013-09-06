@@ -13,6 +13,9 @@ alias lft='for FILE in $(lf); do echo $(file $FILE); done'
 alias git-root='cd $(git rev-parse --show-cdup)'
 alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 
+# commits per day
+alias cpd='git log --pretty=format:"%ad" --date=short | uniq -c'
+
 # GCC (updated version and cross compilation)
 #   brew tap homebrew/versions
 #   brew install gcc48
