@@ -33,9 +33,7 @@ set tags=./tags;/
 let Tlist_Inc_Winwidth=0
 nmap <Leader>T :TlistToggle<CR>
 let Tlist_Ctags_Cmd = "/usr/local/Cellar/ctags/5.8/bin/ctags"
-let Tlist_Auto_Open = 1
 let Tlist_Show_One_File = 1
-"let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Exit_OnlyWindow = 1
 
 "Command-t ignores
