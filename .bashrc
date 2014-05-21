@@ -91,16 +91,23 @@ green=$(tput setaf 2)
 normal=$(tput sgr0)
 
 function bash_prompt(){
-  virtualenv=$(python -c 'import sys; print sys.real_prefix' &>/dev/null && echo -n '\[$bold_red\][V_ENV_ON]\[$normal\]' || echo -n "")
+  virtualenv=''
+
+  python -c 'import sys; print sys.real_prefix' &>/dev/null
+
+  if [ $? -eq 0 ]; then
+    virtualenv=$(echo "\[$bold_red\][V_ENV_ON]\[$normal\]:")
+  fi
+
   directories=$(pwd | cut -d / -f 4-99)
   git rev-parse &> /dev/null
 
   if [ $? -eq 0 ]; then
     git_user=$(git config user.email)
     git_branch=$(git branch 2> /dev/null | grep '\*' | awk '{print $2}')
-    export PS1='$virtualenv\[$blue\]$directories\[$normal\]($git_user:\[$orange\]$git_branch\[$normal\])\[$green\]~>\[$normal\]'
+    export PS1="$virtualenv\[$blue\]$directories\[$normal\]($git_user:\[$orange\]$git_branch\[$normal\])\[$green\]~>\[$normal\]"
   else
-    export PS1='$virtualenv\[$orange\]$directories\[$green\]~>\[$normal\]'
+    export PS1="$virtualenv\[$orange\]$directories\[$green\]~>\[$normal\]"
   fi
 }
 
