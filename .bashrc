@@ -38,10 +38,6 @@ function lf(){
   ruby -e "STDIN.readlines.each {|line| line.strip!; puts line unless line.empty? || line.eql?('.') || line.eql?('..')}"
 }
 
-function en(){
-  vim ~/BTSync/dev_notes
-}
-
 # Sync all my dotfiles in my dotfiles folder
 function dotsync(){
   cp ~/.vimrc ~/dotfiles/.vimrc
