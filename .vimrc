@@ -38,9 +38,6 @@ let Tlist_Exit_OnlyWindow = 1
 
 "Command-t ignores
 :set wildignore+=*.eot,*.svg,*.png,*.o,*.pyc,*.ttf,*.woff,*.lock,*.db,*.swp,env/*
-set wildignore+=/Users/rob/c_game/dependencies/*
-set wildignore+=/Users/rob/c_game/dependencies_source/*
-set wildignore+=/Users/rob/c_game/bin/*
 
 "my custom vim commands
 command DeleteTrailingWhitespace %s/\s\+$//
