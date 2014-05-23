@@ -11,6 +11,7 @@
   tree = log --oneline --decorate --graph --all
   dc = diff --cached
   dh = diff HEAD~1
+  bc = diff --name-status
 [core]
   excludesfile = /Users/rob/.gitignore_global
   pager = less -+F
