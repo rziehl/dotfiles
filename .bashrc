@@ -1,8 +1,14 @@
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/Users/rziehl/adt-bundle-mac-x86_64/sdk/platform-tools:$PATH"
+export PATH="/Users/rziehl/dev/sdk/android-ndk-r8d:$PATH"
 eval "$(rbenv init -)"
+export FY_PATH_TOOLS=~/git/tools
+export FY_JAVA_CMD=drip
+export UNITY_BUILD="/Users/rziehl/git/Unity/ios_example/ios_simulator_5_build"
+export LIBRARIES_DIR="/Users/rziehl/git/Libraries"
 
 alias vim='mvim -v'
-alias ls='ls -alG'
+alias ls='ls -alGh'
 alias eb='vim ~/.bashrc'
 alias sb='source ~/.bashrc'
 alias tree='tree -C'
@@ -22,9 +28,9 @@ alias cpd='git log --pretty=format:"%ad" --date=short | uniq -c'
 # also download:
 #   http://crossgcc.rts-software.org/download/gcc-4.8.0-qt-4.8.4-win32/gcc-4.8.0-qt-4.8.4-for-mingw32.dmg
 #   http://crossgcc.rts-software.org/download/gcc-4.8.0-for-linux32-linux64/gcc-4.8.0-for-linux32.dmg
-alias gcc='gcc-4.8'
-alias win32-gcc='/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin/i586-mingw32-gcc-4.8.0'
-alias linux-gcc='/usr/local/gcc-4.8.0-for-linux32/bin/i586-pc-linux-gcc-4.8.0'
+#alias gcc='gcc-4.8'
+#alias win32-gcc='/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin/i586-mingw32-gcc-4.8.0'
+#alias linux-gcc='/usr/local/gcc-4.8.0-for-linux32/bin/i586-pc-linux-gcc-4.8.0'
 
 # String utils
 alias lstrip="sed 's/^ *//'"
@@ -245,3 +251,8 @@ function rgrep(){
 }
 
 export PROMPT_COMMAND="activate_virtualenv; chronicle_update; sync_history; bash_prompt; $PROMPT_COMMAND"
+
+# Fuel specific stuff
+export FY_PATH_ANDROID_NDK=/Users/rziehl/dev/sdk/android-ndk-r8d/ndk-build
+export FY_PATH_ANDROID_SDK=/Users/rziehl/adt-bundle-mac-x86_64/sdk
+export PATH="/usr/local/share/python:$PATH"
