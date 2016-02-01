@@ -53,6 +53,7 @@ function dotsync(){
   cp ~/.bashrc ~/dotfiles/.bashrc
   cp ~/.bash_profile ~/dotfiles/.bash_profile
   cp ~/.ctags ~/dotfiles/.ctags
+  cp ~/.rspec ~/dotfiles/.rspec
   rsync -ur --delete ~/.vim ~/dotfiles
 }
 
