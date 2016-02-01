@@ -39,12 +39,6 @@ let Tlist_Exit_OnlyWindow = 1
 "Command-t ignores
 :set wildignore+=*.eot,*.svg,*.png,*.o,*.pyc,*.ttf,*.woff,*.lock,*.db,*.swp,env/*,tmp/*,env-dev/*,env-prod/*,env-test/*,env-stage/*
 
-" NERDTREE
-" Close window if NERDTree is the only buffer left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" Open NERDTree with Ctrl+N
-map <C-n> :NERDTreeToggle<CR>
-
 "my custom vim commands
 command DeleteTrailingWhitespace %s/\s\+$//
 
